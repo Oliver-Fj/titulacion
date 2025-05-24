@@ -6,49 +6,69 @@
 📍 **Formato:** LaTeX  
 👨‍💻 **Autor:** [Oliver-Fj](https://github.com/Oliver-Fj)
 
----
 
-## 📂 Estructura del repositorio
+## 📁 Estructura del proyecto
 
-📁 titulacion/
-├── 📄 main.tex # Documento principal
-├── 📄 portada.tex # Portada
-├── 📄 agradecimientos.tex # Agradecimientos
-├── 📄 resumen.tex # Resumen
-├── 📄 introduccion.tex # Introducción
-├── 📄 marco_teorico.tex # Marco teórico
-├── 📄 metodologia.tex # Metodología
-├── 📄 resultados.tex # Resultados
-├── 📄 conclusiones.tex # Conclusiones
-├── 📄 bibliografia.bib # Bibliografía
-├── 📁 images/ # Imágenes utilizadas
-└── 📄 README.md # Este archivo
 
-yaml
+titulacion/
+├── main.tex               # Documento principal en LaTeX
+├── indent.log             # Registro de indentación
+├── figuras/               # Carpeta de imágenes
+│   └── IESTP.png          # Logo del instituto
+├── build/                 # Archivos generados automáticamente al compilar
+│   ├── main.pdf           # Documento final en PDF
+│   ├── main.aux           # Auxiliar de LaTeX
+│   ├── main.log           # Log de compilación
+│   ├── main.toc           # Tabla de contenidos
+│   ├── main.lof           # Lista de figuras
+│   ├── main.lot           # Lista de tablas
+│   ├── main.synctex.gz    # SyncTeX para edición
+│   ├── main.fls           # Archivos de referencia
+│   └── main.fdb_latexmk   # Base de datos de compilación
+🛠️ Tecnologías utilizadas
+📚 LaTeX – Composición tipográfica profesional.
+
+📄 BibTeX – Gestión de bibliografía.
+
+🖼️ TikZ / Figuras – Para diagramas y gráficos técnicos.
+
+🚀 Compilación
+Para generar el PDF:
+
+Instala una distribución LaTeX (como TeX Live).
+
+Compila con los siguientes comandos:
+
+bash
 Copiar
 Editar
-
----
-
-## 🛠️ Tecnologías utilizadas
-
-- 📚 **LaTeX** – Para la creación y estructuración profesional del documento.
-- 🖼️ **TikZ** – Para diagramas y diseño de recuadros destacados.
-- 📊 **Tablas con estilo** – Comparativas y visualización de datos.
-
----
-
-## 🚀 Compilación
-
-Para compilar este proyecto:
-
-1. Asegúrate de tener una distribución LaTeX instalada (por ejemplo, [TeX Live](https://www.tug.org/texlive/)).
-2. Coloca todos los `.tex` en la misma carpeta.
-3. Compila con:
-
-```bash
 pdflatex main.tex
 bibtex main
 pdflatex main.tex
 pdflatex main.tex
-También puedes usar editores como TeXstudio, Overleaf, o VS Code con la extensión LaTeX Workshop.
+También puedes utilizar:
+
+Overleaf 🌐 (en línea)
+
+TeXstudio 🖥️
+
+VS Code con LaTeX Workshop 💻
+
+🎯 Objetivo del proyecto
+Este trabajo fue desarrollado como parte del proceso de titulación técnica profesional en el área de Diseño y Programación Web, proponiendo una solución tecnológica para fortalecer el comercio local a través de una aplicación móvil moderna y funcional.
+
+📄 Licencia
+Este proyecto se presenta con fines académicos y personales.
+📌 Todos los derechos reservados al autor.
+
+
+
+
+
+### ✅ 2. Subir el `README.md` al repositorio
+
+Ahora ejecuta estos comandos en tu terminal:
+
+git add README.md
+git commit -m "Agregar README con detalles del proyecto"
+git push origin main
