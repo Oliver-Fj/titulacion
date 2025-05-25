@@ -1,5 +1,7 @@
 \documentclass[12pt,a4paper]{report}
 \usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{titlesec}
 \usepackage[spanish,es-noshorthands]{babel}  
 \usepackage[letterpaper, margin=2cm, headheight=60pt, footskip=50pt]{geometry}
 
@@ -22,15 +24,33 @@
 \usepackage{colortbl}
 \usepackage{array}
 
-% FONTS para evitar warnings de fuentes
-\usepackage{lmodern}
+% FUENTE MODERNA Y ELEGANTE
 \usepackage[T1]{fontenc}
+\usepackage{ebgaramond}
+\usepackage[ebgaramond]{newtxmath}
+\usepackage{anyfontsize}
 
 % Configurar headheight para evitar warnings
 \setlength{\headheight}{60pt}
 
 % Espaciado
-\onehalfspacing
+\doublespacing
+
+% Unificar formato de títulos de capítulos
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+% Unificar formato de títulos de secciones
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}
+
+% Unificar formato de títulos de subsecciones  
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+% Unificar formato de títulos de subsubsecciones
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
 
 % ESTILOS DE PÁGINA SEGÚN APA
 
@@ -41,13 +61,13 @@
     \renewcommand{\footrulewidth}{0pt}
 }
 
-% Páginas preliminares (resumen, índices) - Estilo APA simplificado
+% Páginas preliminares (resumen, abstract) - Solo numeración romana
 \fancypagestyle{preliminares}{
     \fancyhf{}
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\footrulewidth}{0pt}
     
-    % Solo numeración romana centrada
+    % Solo numeración romana al centro
     \fancyfoot[C]{\thepage}
 }
 
@@ -72,7 +92,7 @@
     \fancyfoot[C]{
         \colorbox{blue!20}{\textcolor{blue!80}{\textbf{ Pág. \thepage\ de \pageref{LastPage} }}}
     }
-    \fancyfoot[R]{\small\textit{2025 - Concepción, Junín}}
+    \fancyfoot[R]{\small\textit{2025 - San Agustin, Junín}}
     
     % Línea del pie
     \renewcommand{\footrulewidth}{1pt}
@@ -82,11 +102,29 @@
 % Configurar el estilo de página predeterminado para el documento
 \pagestyle{contenido}
 
-% Asegurar que los capítulos mantengan el estilo uniforme
+% REDEFINIR TABLEOFCONTENTS PARA QUE TODAS SUS PÁGINAS SEAN EMPTY
+\makeatletter
+\renewcommand\tableofcontents{%
+    \pagestyle{empty}%  % Forzar estilo empty para TODAS las páginas del TOC
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\contentsname
+        \@mkboth{%
+           \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+    \thispagestyle{empty}% % También la primera página
+    \@starttoc{toc}%
+    \if@restonecol\twocolumn\fi
+    }
+\makeatother
+
+% Configuración simple de capítulos
 \makeatletter
 \renewcommand{\chapter}{%
   \if@openright\cleardoublepage\else\clearpage\fi
-  \thispagestyle{contenido}%  % Forzar estilo uniforme en todas las páginas de capítulo
+  \thispagestyle{contenido}%
   \global\@topnum\z@
   \@afterindentfalse
   \secdef\@chapter\@schapter}
@@ -172,19 +210,17 @@
 
 \end{center}
 
-% ÍNDICES CON NUMERACIÓN ROMANA - ESTILO APA
+% ÍNDICES CON NUMERACIÓN ROMANA PERO SIN ENCABEZADOS
 \newpage
 \pagenumbering{roman}
-\pagestyle{preliminares}
 
+% ÍNDICE GENERAL - AHORA TODAS LAS PÁGINAS ESTARÁN EMPTY
 \tableofcontents
-\newpage
+\clearpage
 
-\listoffigures
-\newpage
-
-\listoftables
-\newpage
+% RESTO DE PÁGINAS PRELIMINARES - Con numeración romana pero sin encabezados
+\pagestyle{preliminares}
+\fancyfoot[C]{\thepage} % Solo número de página al centro
 
 % RESUMEN CON ESTILO APA PRELIMINAR
 \chapter*{RESUMEN}
@@ -357,7 +393,7 @@ Se fundamenta en los principios de diseño centrado en el usuario, aplicando met
 
 \chapter{PROCESO METODOLÓGICO}
 
-\section{Descripción de los Pasos, Etapas, Métodos, Procedimientos, Materiales y Equipos Utilizados en el Desarrollo del Trabajo}
+\section{Descripción de los Pasos, Etapas, Métodos, Procedimientos, \\ Materiales y Equipos Utilizados en el Desarrollo del Trabajo}
 
 \subsection{Metodología de Desarrollo Adoptada}
 Se utilizó la metodología ágil Scrum adaptada a las necesidades específicas del proyecto, con las siguientes características y configuraciones:
@@ -632,13 +668,13 @@ Se utilizó la metodología ágil Scrum adaptada a las necesidades específicas 
 \begin{thebibliography}{25}
 
 	\bibitem{flutter2024}
-	Google LLC. (2024). \textit{Flutter Documentation: Building beautiful native apps}. Recuperado de https://flutter.dev/docs
+	Google LLC. (2024). \textit{Flutter Documentation: Building beautiful native apps}. Recuperado de \url{https://flutter.dev/docs}
 
 	\bibitem{dart2024}
-	Google LLC. (2024). \textit{Dart Programming Language: Client-optimized language for fast apps}. Recuperado de https://dart.dev
+	Google LLC. (2024). \textit{Dart Programming Language: Client-optimized language for fast apps}. Recuperado de \url{https://dart.dev}
 
 	\bibitem{firebase2023}
-	Google LLC. (2023). \textit{Firebase Documentation: Build and run successful apps}. Recuperado de https://firebase.google.com/docs
+	Google LLC. (2023). \textit{Firebase Documentation: Build and run successful apps}. Recuperado de \url{https://firebase.google.com/docs}
 
 	\bibitem{ecommerce2023}
 	Ministerio de la Producción. (2023). \textit{Digitalización de MYPE en el Perú: Estrategias y resultados}. Lima: PRODUCE.
@@ -1802,7 +1838,7 @@ El proyecto ha catalizado una transformación digital significativa en Concepci�
 
 \textbf{Margen de Utilidad Proyectado: S/ 50,000 (20\%)}
 
-\chapter{LECCIONES APRENDIDAS Y MEJORES PRÁCTICAS}
+\chapter{LECCIONES APRENDIDAS Y \\ MEJORES PRÁCTICAS}
 
 \section{Desafíos Enfrentados}
 
